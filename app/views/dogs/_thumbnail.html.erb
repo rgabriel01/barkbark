@@ -1,0 +1,11 @@
+<article>
+  <a href="<%= url_for(dog) %>">
+    <h2 class="dog-name"><%= dog.name %></h2>
+  </a>
+  <% if !current_user_the_owner?(dog.id) and !current_user.nil? %>
+    <%= form_with(model: dog, url: post_like_dog_url(dog), method: :post, html: { name: 'dog_like_form' }) do |f| %>
+      <%= submit_tag('Like!') %>
+    <% end %>
+  <% end %>
+  <%= image_tag url_for(dog.images.first), class: "dog-photo", alt: "Photo of #{dog.name}" %>
+</article>

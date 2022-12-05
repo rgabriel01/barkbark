@@ -1,0 +1,7 @@
+<% @dogs.each_with_index do |dog, index| %>
+  <%= render partial: 'thumbnail', locals: {dog: dog} %>
+  <% if ((index + 1) % 2) == 0 %>
+    <%= image_tag 'ad.jpg' %>
+  <% end %>
+<% end %>
+<%= paginate @dogs %>
